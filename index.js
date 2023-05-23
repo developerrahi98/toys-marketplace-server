@@ -69,7 +69,7 @@ async function run() {
                 quantity:updatedToy.quantity
             }
         }
-        const result = await toyCollection.UpdateOne(filter, toy, options);
+        const result = await toyCollection.updateOne(filter, toy, options);
         res.send(result);
     })
     app.delete('/addToy/:id', async(req, res)=>{

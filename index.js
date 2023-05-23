@@ -59,6 +59,7 @@ async function run() {
         const filter ={_id : new ObjectId(id)}
         const options ={upsert : true}
         const updatedToy = req.body
+        console.log(updatedToy);
         const toy = {
             $set:{
                 name: updatedToy.name,

@@ -32,6 +32,18 @@ async function run() {
     await client.connect();
 
     const toyCollection = client.db('toyDB').collection('toy');
+    const singleToyCollection = client.db('toyDB').collection('singleToy');
+
+    app.get('/singletoy', async (req, res) => {
+      const result = await singleToyCollection.find().toArray();
+      res.send(result);
+    })
+    app.get('/singleToy/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await singleToyCollection.findOne(query);
+      res.send(result);
+    })
 
     app.get('/addToy', async(req,res)=>{
         const cursor = toyCollection.find();
